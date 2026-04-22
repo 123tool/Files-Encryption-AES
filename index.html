@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Files Encryption AES | 123Tool & SPY-E</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;700&family=Orbitron:wght@500;900&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --primary: #00f2ff;
+            --secondary: #7000ff;
+            --bg-dark: #050505;
+            --glass: rgba(255, 255, 255, 0.05);
+            --glass-border: rgba(255, 255, 255, 0.1);
+        }
+
+        * {
+            margin: 0; padding: 0; box-sizing: border-box;
+            font-family: 'Inter', sans-serif;
+        }
+
+        body {
+            background: radial-gradient(circle at center, #111 0%, #000 100%);
+            color: #fff;
+            height: 100vh;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* Background Animasi Ganas */
+        body::before {
+            content: "";
+            position: absolute;
+            width: 200%; height: 200%;
+            background: linear-gradient(45deg, transparent 45%, var(--primary) 50%, transparent 55%);
+            opacity: 0.05;
+            animation: scan 10s linear infinite;
+        }
+
+        @keyframes scan {
+            0% { transform: translateY(-50%) translateX(-50%) rotate(0deg); }
+            100% { transform: translateY(-50%) translateX(-50%) rotate(360deg); }
+        }
+
+        .container {
+            width: 90%;
+            max-width: 500px;
+            background: var(--glass);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid var(--glass-border);
+            border-radius: 24px;
+            padding: 40px;
+            text-align: center;
+            box-shadow: 0 25px 50px rgba(0,0,0,0.5);
+            position: relative;
+            z-index: 10;
+        }
+
+        h1 {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 1.5rem;
+            letter-spacing: 2px;
+            margin-bottom: 10px;
+            background: linear-gradient(to right, var(--primary), var(--secondary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .brand-sub {
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 4px;
+            color: #888;
+            margin-bottom: 40px;
+        }
+
+        .step { display: none; animation: fadeIn 0.5s ease; }
+        .step.active { display: block; }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Buttons Ganas */
+        .btn-group { display: flex; flex-direction: column; gap: 15px; }
+
+        .btn {
+            padding: 16px;
+            border-radius: 12px;
+            border: none;
+            cursor: pointer;
+            font-weight: 700;
+            text-transform: uppercase;
+            transition: 0.3s;
+            font-size: 0.9rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn-encrypt { background: var(--primary); color: #000; }
+        .btn-decrypt { background: transparent; border: 1px solid var(--secondary); color: #fff; }
+        .btn:hover { transform: scale(1.02); filter: brightness(1.2); box-shadow: 0 0 20px rgba(0, 242, 255, 0.4); }
+
+        input[type="password"], input[type="file"] {
+            width: 100%;
+            padding: 15px;
+            background: rgba(255,255,255,0.05);
+            border: 1px solid var(--glass-border);
+            border-radius: 12px;
+            color: #fff;
+            margin-bottom: 20px;
+            outline: none;
+            text-align: center;
+        }
+
+        footer {
+            position: absolute;
+            bottom: 20px;
+            font-size: 0.7rem;
+            color: #555;
+            width: 100%;
+            text-align: center;
+        }
+
+        .back-btn {
+            position: absolute;
+            top: 20px; left: 20px;
+            color: var(--primary);
+            text-decoration: none;
+            font-size: 0.8rem;
+            display: none;
+        }
+    </style>
+</head>
+<body class="">
+
+    <a href="#" class="back-btn" id="backBtn">← BACK</a>
+
+    <div class="container">
+        <header>
+            <h1>FILES ENCRYPTION AES</h1>
+            <div class="brand-sub">Engineered by 123Tool & SPY-E</div>
+        </header>
+
+        <div id="step1" class="step active">
+            <div class="btn-group">
+                <button class="btn btn-encrypt" onclick="selectMode('encrypt')">Encrypt Securely</button>
+                <button class="btn btn-decrypt" onclick="selectMode('decrypt')">Decrypt File</button>
+            </div>
+        </div>
+
+        <div id="step2" class="step">
+            <h3 id="step2Title" style="margin-bottom: 20px;">Select File</h3>
+            <input type="file" id="fileInput">
+            <button class="btn btn-encrypt" style="width: 100%;" onclick="nextStep(3)">Next Phase</button>
+        </div>
+
+        <div id="step3" class="step">
+            <h3 style="margin-bottom: 20px;">Secret Key</h3>
+            <input type="password" id="passwordInput" placeholder="Enter strong passphrase...">
+            <button id="processBtn" class="btn btn-encrypt" style="width: 100%;">Execute</button>
+        </div>
+
+        <div id="step4" class="step">
+            <h3 style="margin-bottom: 20px;">Process Complete</h3>
+            <a id="downloadBtn" class="btn btn-encrypt" style="display: block; text-decoration: none;">Download Result</a>
+        </div>
+    </div>
+
+    <footer>
+        &copy; 2026 123TOOL & SPY-E CYBERSECURITY DIVISION
+    </footer>
+
+    </body>
+</html>
