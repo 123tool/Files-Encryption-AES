@@ -37,7 +37,8 @@
 
 ## 🔐 Disclaimer
 
-Aplikasi ini disediakan oleh **123Tool & SPY-E** untuk tujuan keamanan data pribadi. Kami tidak bertanggung jawab atas kehilangan data akibat lupa password. Selalu simpan kunci akses Anda di tempat yang aman.
+Aplikasi ini disediakan oleh 123Tool & SPY-E untuk tujuan keamanan data pribadi. Kami tidak bertanggung jawab atas kehilangan data akibat lupa password. Selalu simpan kunci akses Anda di tempat yang aman.
+
 ---
 *Empowering Digital Privacy.*
 ---
