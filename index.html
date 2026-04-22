@@ -12,7 +12,7 @@
             --primary: #00f2ff;
             --secondary: #7000ff;
             --bg-dark: #050505;
-            --glass: rgba(255, 255, 255, 0.05);
+            --glass: rgba(255, 255, 255, 0.03);
             --glass-border: rgba(255, 255, 255, 0.1);
         }
 
@@ -25,20 +25,21 @@
             background: radial-gradient(circle at center, #111 0%, #000 100%);
             color: #fff;
             height: 100vh;
-            overflow: hidden;
             display: flex;
             align-items: center;
             justify-content: center;
+            overflow: hidden;
+            position: relative;
         }
 
-        /* Background Animasi Ganas */
+        /* Animasi Latar Belakang Cyber */
         body::before {
             content: "";
             position: absolute;
             width: 200%; height: 200%;
             background: linear-gradient(45deg, transparent 45%, var(--primary) 50%, transparent 55%);
-            opacity: 0.05;
-            animation: scan 10s linear infinite;
+            opacity: 0.03;
+            animation: scan 15s linear infinite;
         }
 
         @keyframes scan {
@@ -48,104 +49,131 @@
 
         .container {
             width: 90%;
-            max-width: 500px;
+            max-width: 450px;
             background: var(--glass);
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
+            backdrop-filter: blur(25px);
+            -webkit-backdrop-filter: blur(25px);
             border: 1px solid var(--glass-border);
-            border-radius: 24px;
-            padding: 40px;
+            border-radius: 30px;
+            padding: 40px 30px;
             text-align: center;
-            box-shadow: 0 25px 50px rgba(0,0,0,0.5);
+            box-shadow: 0 25px 80px rgba(0,0,0,0.8);
             position: relative;
             z-index: 10;
         }
 
-        h1 {
+        header h1 {
             font-family: 'Orbitron', sans-serif;
-            font-size: 1.5rem;
-            letter-spacing: 2px;
-            margin-bottom: 10px;
+            font-size: 1.4rem;
+            letter-spacing: 3px;
+            margin-bottom: 8px;
             background: linear-gradient(to right, var(--primary), var(--secondary));
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
         }
 
         .brand-sub {
-            font-size: 0.7rem;
+            font-size: 0.65rem;
             text-transform: uppercase;
-            letter-spacing: 4px;
-            color: #888;
-            margin-bottom: 40px;
+            letter-spacing: 5px;
+            color: #666;
+            margin-bottom: 45px;
         }
 
-        .step { display: none; animation: fadeIn 0.5s ease; }
+        .step { display: none; animation: slideUp 0.4s cubic-bezier(0.4, 0, 0.2, 1); }
         .step.active { display: block; }
 
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(10px); }
+        @keyframes slideUp {
+            from { opacity: 0; transform: translateY(20px); }
             to { opacity: 1; transform: translateY(0); }
         }
 
-        /* Buttons Ganas */
         .btn-group { display: flex; flex-direction: column; gap: 15px; }
 
         .btn {
-            padding: 16px;
-            border-radius: 12px;
+            padding: 18px;
+            border-radius: 15px;
             border: none;
             cursor: pointer;
             font-weight: 700;
             text-transform: uppercase;
-            transition: 0.3s;
-            font-size: 0.9rem;
-            position: relative;
-            overflow: hidden;
+            transition: all 0.3s ease;
+            font-size: 0.85rem;
+            letter-spacing: 1px;
         }
 
-        .btn-encrypt { background: var(--primary); color: #000; }
+        .btn-encrypt { background: var(--primary); color: #000; box-shadow: 0 0 15px rgba(0, 242, 255, 0.2); }
         .btn-decrypt { background: transparent; border: 1px solid var(--secondary); color: #fff; }
-        .btn:hover { transform: scale(1.02); filter: brightness(1.2); box-shadow: 0 0 20px rgba(0, 242, 255, 0.4); }
+        
+        .btn:hover { 
+            transform: translateY(-3px); 
+            filter: brightness(1.2); 
+            box-shadow: 0 10px 20px rgba(0,0,0,0.4); 
+        }
 
         input[type="password"], input[type="file"] {
             width: 100%;
-            padding: 15px;
+            padding: 16px;
             background: rgba(255,255,255,0.05);
             border: 1px solid var(--glass-border);
             border-radius: 12px;
             color: #fff;
-            margin-bottom: 20px;
+            margin-bottom: 25px;
             outline: none;
             text-align: center;
+            font-size: 1rem;
         }
 
-        footer {
-            position: absolute;
-            bottom: 20px;
-            font-size: 0.7rem;
-            color: #555;
-            width: 100%;
-            text-align: center;
+        input[type="password"]:focus {
+            border-color: var(--primary);
+            background: rgba(255,255,255,0.08);
         }
 
         .back-btn {
             position: absolute;
-            top: 20px; left: 20px;
+            top: 25px; left: 25px;
             color: var(--primary);
             text-decoration: none;
-            font-size: 0.8rem;
+            font-size: 0.75rem;
+            font-weight: bold;
             display: none;
+            letter-spacing: 1px;
+            z-index: 100;
+        }
+
+        .back-btn:hover { text-shadow: 0 0 10px var(--primary); }
+
+        footer {
+            position: absolute;
+            bottom: 25px;
+            font-size: 0.6rem;
+            color: #444;
+            width: 100%;
+            text-align: center;
+            letter-spacing: 2px;
+        }
+
+        #downloadBtn {
+            display: block;
+            text-decoration: none;
+            margin-top: 10px;
+        }
+
+        /* Responsive Mobile */
+        @media (max-width: 480px) {
+            .container { padding: 35px 20px; }
+            header h1 { font-size: 1.1rem; }
         }
     </style>
 </head>
-<body class="">
+<body>
 
-    <a href="#" class="back-btn" id="backBtn">← BACK</a>
+    <a href="#" class="back-btn" id="backBtn">← BACK TO TERMINAL</a>
 
     <div class="container">
         <header>
             <h1>FILES ENCRYPTION AES</h1>
-            <div class="brand-sub">Engineered by 123Tool & SPY-E</div>
+            <div class="brand-sub">123Tool & SPY-E PRO</div>
         </header>
 
         <div id="step1" class="step active">
@@ -156,26 +184,111 @@
         </div>
 
         <div id="step2" class="step">
-            <h3 id="step2Title" style="margin-bottom: 20px;">Select File</h3>
+            <h4 id="step2Title" style="margin-bottom: 20px; font-weight: 300; color: #bbb;">SELECT DATA SOURCE</h4>
             <input type="file" id="fileInput">
-            <button class="btn btn-encrypt" style="width: 100%;" onclick="nextStep(3)">Next Phase</button>
+            <button class="btn btn-encrypt" style="width: 100%;" onclick="nextStep(3)">Initialize Phase</button>
         </div>
 
         <div id="step3" class="step">
-            <h3 style="margin-bottom: 20px;">Secret Key</h3>
-            <input type="password" id="passwordInput" placeholder="Enter strong passphrase...">
-            <button id="processBtn" class="btn btn-encrypt" style="width: 100%;">Execute</button>
+            <h4 style="margin-bottom: 20px; font-weight: 300; color: #bbb;">SECURITY ACCESS KEY</h4>
+            <input type="password" id="passwordInput" placeholder="Enter secret key...">
+            <button id="processBtn" class="btn btn-encrypt" style="width: 100%;">Execute Command</button>
         </div>
 
         <div id="step4" class="step">
-            <h3 style="margin-bottom: 20px;">Process Complete</h3>
-            <a id="downloadBtn" class="btn btn-encrypt" style="display: block; text-decoration: none;">Download Result</a>
+            <div style="margin-bottom: 25px;">
+                <svg width="60" height="60" viewBox="0 0 24 24" fill="none" stroke="#00f2ff" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
+            </div>
+            <h3 style="margin-bottom: 20px; font-family: 'Orbitron'; font-size: 1rem;">SUCCESS!</h3>
+            <a id="downloadBtn" class="btn btn-encrypt">Download Result</a>
         </div>
     </div>
 
     <footer>
-        &copy; 2026 123TOOL & SPY-E CYBERSECURITY DIVISION
+        ENCRYPTION ENGINE v3.1.2 // POWERED BY 123TOOL & SPY-E CYBER UNIT
     </footer>
 
-    </body>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.2/rollups/aes.js"></script>
+    
+    <script>
+        let currentMode = '';
+        let selectedFile = null;
+
+        const backBtn = document.getElementById('backBtn');
+
+        // Navigation Controller
+        function nextStep(step) {
+            document.querySelectorAll('.step').forEach(s => s.classList.remove('active'));
+            document.getElementById('step' + step).classList.add('active');
+            
+            if (step > 1) {
+                backBtn.style.display = 'block';
+            } else {
+                backBtn.style.display = 'none';
+            }
+        }
+
+        function selectMode(mode) {
+            currentMode = mode;
+            document.getElementById('step2Title').innerText = mode === 'encrypt' ? 'LOAD TARGET FILE' : 'LOAD ENCRYPTED FILE';
+            nextStep(2);
+        }
+
+        backBtn.addEventListener('click', (e) => {
+            e.preventDefault();
+            nextStep(1);
+        });
+
+        // File Handler
+        document.getElementById('fileInput').addEventListener('change', function(e) {
+            selectedFile = e.target.files[0];
+        });
+
+        // Core Engine Execution
+        document.getElementById('processBtn').addEventListener('click', function() {
+            const password = document.getElementById('passwordInput').value;
+
+            if (!selectedFile) return alert('No file detected, Bos!');
+            if (password.length < 5) return alert('Access Key too short! (Min. 5 chars)');
+
+            const reader = new FileReader();
+
+            if (currentMode === 'encrypt') {
+                reader.onload = function(e) {
+                    try {
+                        const encrypted = CryptoJS.AES.encrypt(e.target.result, password);
+                        const downloadLink = document.getElementById('downloadBtn');
+                        
+                        downloadLink.setAttribute('href', 'data:application/octet-stream,' + encrypted);
+                        downloadLink.setAttribute('download', selectedFile.name + '.spy-e');
+                        
+                        nextStep(4);
+                    } catch (err) {
+                        alert('Encryption Failed: ' + err.message);
+                    }
+                };
+                reader.readAsDataURL(selectedFile);
+            } else {
+                reader.onload = function(e) {
+                    try {
+                        const decrypted = CryptoJS.AES.decrypt(e.target.result, password).toString(CryptoJS.enc.Latin1);
+
+                        if (!/^data:/.test(decrypted)) {
+                            throw new Error('Invalid Key');
+                        }
+
+                        const downloadLink = document.getElementById('downloadBtn');
+                        downloadLink.setAttribute('href', decrypted);
+                        downloadLink.setAttribute('download', selectedFile.name.replace('.spy-e', ''));
+
+                        nextStep(4);
+                    } catch (err) {
+                        alert('ACCESS DENIED: Wrong key or corrupted data.');
+                    }
+                };
+                reader.readAsText(selectedFile);
+            }
+        });
+    </script>
+</body>
 </html>
